@@ -21,6 +21,9 @@ long long asinineHash(std::string str) {
 int main() {
 	int collisions[45402] = { 0 };
 
+	std::ofstream dataFile;
+	dataFile.open("hashresults.csv");
+	
 	std::fstream wordsFile;
 	
 	wordsFile.open("words.txt", std::ios::in); 
@@ -32,14 +35,20 @@ int main() {
 		collisions[asinineHash(currentLine) % 45402] = collisions[asinineHash(currentLine) % 45402] + 1;
 		wordsCounted++;
 	}
+	
 	wordsFile.close();
 	
 	double totalCollisions = 0;
 	for (int i = 0; i < 45402; i++) {
+		dataFile << collisions[i] << ", ";
 		if (collisions[i] > 1) {
 			totalCollisions++;
 		}
 	}
+	
+	
+	dataFile << "\n";
+	dataFile.close();
 	
 	std::cout << "CS 260: A6 hashing, Charlie Welsh, " << (totalCollisions / wordsCounted) * 100 << "%"<< std::endl;
 }
