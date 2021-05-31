@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <fstream>
+#include <string>
 #include <math.h>
 
 long long asinineHash(std::string str) {
