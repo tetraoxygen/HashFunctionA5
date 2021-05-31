@@ -18,7 +18,7 @@ long long asinineHash(std::string str) {
 			firstBytes
 		);
 }
-
+// Get GitHub to actually build the damn thing
 int main() {
 	int collisions[45402] = { 0 };
 
